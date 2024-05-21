@@ -1,0 +1,38 @@
+sequenceDiagram
+    
+    participantes cliente
+    participantes servidor
+    
+    peticion : cliente->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    Servidor recibe solicitud
+    respuesta : servidor-->>cliente: HTML document
+    Servidor en reposo
+
+    peticion : cliente->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    Servidor recibe solicitud
+    respuesta : servidor-->>cliente: main.css CSS file
+    Servidor en reposo
+
+    peticion : cliente->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    Servidor recibe solicitud
+    respuesta : servidor-->>cliente: main.js Javascript file
+    Servidor en reposo
+
+    peticion : cliente->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    Servidor recibe solicitud
+    respuesta : servidor-->>cliente: data.json JSON file [{"content":"asdf"},{"date":"2024-05-21T13:01:45.328Z"}....]
+    Servidor en reposo
+
+    peticion : cliente->>servidor: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    Servidor recibe solicitud
+    respuesta : servidor-->>cliente: data.json JSON file [{"content":"asdf"},{"date":"2024-05-21T13:01:45.328Z"}....]
+    Servidor en reposo
+
+    Se pone texto en el input y se da al boton enviar y sucede lo siguiente:
+    peticion : cliente->>servidor: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    Servidor recibe solicitud
+    respuesta : servidor-->> Codigo de estado: 302 y añade la nota al JSON 
+    Servidor en reposo
+    
+
+      
