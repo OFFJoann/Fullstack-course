@@ -3,24 +3,35 @@ import Content from "./Content";
 import Total from "./Total";
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
-  const totalexersises = exercises1 + exercises2 + exercises3
-  
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+  const totalexersises = course.parts.reduce((sum, parts) => sum + parts.exercises, 0)
+
   return (
     <div>
-      <Header course={course} />
-      <Content parts={part1} exersises={exercises1} />
-      <Content parts={part2} exersises={exercises2} />
-      <Content parts={part3} exersises={exercises3} />
-      <Total total={totalexersises} />
+      <Header course={course.name} />
+      {course.parts.map((part, index) => (
+        <Content key={index} parts={part.name} exersises={part.exercises} />
+      ))}
+      <Total total={totalexersises}/>
     </div>
   )
 }
+
 
 export default App
